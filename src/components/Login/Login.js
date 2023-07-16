@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import classes from "./Login.module.css"
 import { login } from "../../api/userApi";
 
+
 const Login = () =>{
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
@@ -14,14 +15,13 @@ const Login = () =>{
         try {
           const res = await login(emailInputRef.current.value, passwordInputRef.current.value);
           if(res.data){
-            localStorage.setItem('access-token', res.data.accessToken);
+            // localStorage.setItem('access-token', res.data.accessToken);
             localStorage.setItem('user', JSON.stringify(res.data.user));
             navigate('/home');
           }
         } catch (error) {
           setError(error.response.data);
-        }
-       
+        } 
     }
 
     return (
