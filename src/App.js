@@ -1,25 +1,29 @@
-import logo from './logo.svg';
+import React from 'react';
+import MakeTable from './components/EmployeeTable'; 
 import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-function App() {
+import Find from './components/FindEmployee'
+import Update from './components/UpdateEmployee'
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Employee Management</h1>
+      <Router>
+        <Routes>
+          <Route path="/" element={<MakeTable />} />
+          <Route path="/findEmployee" element={<Find />} />
+          <Route path="/Update" element={<Update />} />
+
+        </Routes>
+      </Router>
     </div>
+
+    
+
+    
   );
-}
+};
 
 export default App;
